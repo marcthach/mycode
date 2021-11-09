@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-This program will ask the user how old they are and based on that (plus some randomisation) will choose a book series
+This program will ask the user how old they are and based on that (plus some randomisation) will choose a book/film series
 it will then ask which book and provide a synopsis
 """
 
@@ -41,7 +41,7 @@ books= {
                 ],
 		
 		"The Fast and the Furious": [
-		{"title": "The Fast and the Furious 1", "synopsis": "The series started at 7"},
+		{"title": "The Fast and the Furious 1", "synopsis": "This film doesn't exist, the series started at number 7"},
 		{"title": "The Fast and the Furious 7", "synopsis": "Vin Diesel grunts and people drive fast"},
 		{"title": "The Fast and the Furious 8", "synopsis": "Vin Diesel grunts and people drive fast"},
 		{"title": "The Fast and the Furious 9", "synopsis": "Vin Diesel grunts and people drive fast"},
@@ -53,7 +53,7 @@ books= {
 def main():
     while True:
         # print welcome message
-        print("\nHi there book-lover, I need to know how old you are")
+        print("\nHi there book-or-film-lover, I need to know how old you are")
         while True:
             age=input("well? ")
             if age.isdigit():
@@ -93,14 +93,15 @@ def main():
             print(f"{i} - {book['title']}")
         while True:
             while True:
-                bookno=input("Input the number of the book ")
+                bookno=input("Input the number for the title ")
                 if bookno.isdigit():
                     bookno=int(bookno)
                     break
                 else:
                     print("that's not a number")
             if bookno > 0 and bookno <= i:
-                print(f"\n{books[series][bookno]['synopsis']}")
+                print(f"\n{books[series][bookno-1]['title']}")
+                print(f"{books[series][bookno-1]['synopsis']}")
                 break
             else:
                 print("Your choice is out of range")
